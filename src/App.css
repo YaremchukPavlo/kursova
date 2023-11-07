@@ -23,8 +23,7 @@ html {
 
 .header {
   background-color: rgb(103, 86, 70);
-
-
+    
     color: white;
     padding: 20px;
     text-align: left;
@@ -61,3 +60,28 @@ html {
   .home-page{
     background-color: #A4895C;
   }
+  .page-item active{
+   color: #3F3B2E;
+  }
+  /* Кольор для активного стану */
+.pagination .page-item.active .page-link {
+  background-color: rgb(225, 214, 155);
+  border-color: rgb(225, 214, 155);
+  color: #3F3B2E;
+}
+
+/* Кольор для неактивного стану */
+.pagination .page-item .page-link {
+  /* background-color: #A4895C; */
+  background-color: rgb(103, 86, 70);
+  border-color:  #3F3B2E;
+  color: #A4895C;
+}
+.link{
+  text-decoration: none; /* Прибрати підкреслення */
+  color: #000; /* Змінити колір тексту ссилок на чорний */}
+  .link1{
+    text-decoration: none; /* Прибрати підкреслення */
+    color: #ffffff; /* Змінити колір тексту ссилок на чорний */}
+  
+  

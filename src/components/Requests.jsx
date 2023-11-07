@@ -24,14 +24,14 @@ function Requests() {
 
   return (
     <div className="requests">
-      <h2 className="text-center">Пропозиції автомобілів</h2>
+      <h2 className="text-center">Requests</h2>
 
       {data ? (
         <div className="rer">
           {currentItems.map((request, index) => (
-            <div key={index} className="car-offer-item col-11 card card-body m-3">
-              {request.description}
-              <Link to={`/req-details/${request.id}`}>Переглянути</Link>
+            <div key={index} className="car-offer-item col-11 card card-body m-3 d-flex flex-row">
+              <div className="col-4 p-1 d-flex justify-content-center">{request.description}</div>
+              <div className="col-8 p-1 d-flex justify-content-end"> <Link to={`/req-details/${request.id}`} className="link">Переглянути</Link></div>
             </div>
           ))}
           <ul className="pagination m-3 d-flex justify-content-center">

@@ -9,9 +9,9 @@ function Header() {
       <div className="d-flex justify-content-between align-items-center">
         <p className="m-0">Military Car Helper</p>
         <div className="header-buttons">
-          <button>Requests</button>
+          <button className="m-1">Requests</button>
           <input type="text" />
-          <Link to='/add-car'>ADDDD</Link>
+          <button ><Link to='/add-car' className="link1">ADDDD</Link></button>
           <Link
             to='/login'
             className="btn  buton-acc"

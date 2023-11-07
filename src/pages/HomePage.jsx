@@ -13,7 +13,7 @@ function HomePage() {
               <div className="col-4 d-flex justify-content-center">
                 <News />
               </div>
-              <div className="col-4 ">
+              <div className="col-8">
                 <CarOffers />
               {/* </div> */}
               {/* <div className="col-4 d-flex justify-content-center"> */}
