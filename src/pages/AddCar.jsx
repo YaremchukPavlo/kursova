@@ -13,27 +13,42 @@ function CarForm() {
     driveType: '',
   });
   const [successMessage, setSuccessMessage] = useState('');
+  const [image, setImage] = useState(null); // State to store the selected image file
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]); // Set the selected image file
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Відправка даних на сервер і збереження автомобіля в базу даних
+
     try {
-      // Отримання даних з форми і відправка їх на сервер
+      const formDataWithImage = new FormData();
+      formDataWithImage.append('mark', formData.mark);
+      formDataWithImage.append('model', formData.model);
+      formDataWithImage.append('year', formData.year);
+      formDataWithImage.append('engineCapacity', formData.engineCapacity);
+      formDataWithImage.append('bodyType', formData.bodyType);
+      formDataWithImage.append('weight', formData.weight);
+      formDataWithImage.append('fuelType', formData.fuelType);
+      formDataWithImage.append('carType', formData.carType);
+      formDataWithImage.append('driveType', formData.driveType);
+
+      if (image) {
+        formDataWithImage.append('image', image);
+      }
+
       const response = await fetch('/cars/add-car', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: formDataWithImage,
       });
 
       if (response.ok) {
-      //   // Очистка полів форми після успішного додавання
         setFormData({
           mark: '',
           model: '',
@@ -45,11 +60,10 @@ function CarForm() {
           carType: '',
           driveType: '',
         });
+        setImage(null);
 
-        // Встановлення повідомлення про успішне додавання
         setSuccessMessage('Автомобіль додано успішно!');
 
-        // Закриття повідомлення після 3 секунд
         setTimeout(() => {
           setSuccessMessage('');
         }, 3000);
@@ -57,13 +71,13 @@ function CarForm() {
     } catch (error) {
       console.error('Помилка при додаванні автомобіля:', error);
     }
-  };
-  
+  }
+
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">Додати автомобіль</h2>
       {successMessage && <p className="text-success mt-2">{successMessage}</p>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="mb-3">
           <label htmlFor="mark" className="form-label">Марка:</label>
           <input
@@ -161,6 +175,16 @@ function CarForm() {
             name="driveType"
             value={formData.driveType}
             onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="image" className="form-label">Зображення:</label>
+          <input
+            type="file"
+            className="form-control"
+            id="image"
+            name="image"
+            onChange={handleImageChange}
           />
         </div>
         <button type="submit" className="btn btn-primary">Додати автомобіль</button>
