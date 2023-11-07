@@ -40,7 +40,7 @@ function CarDetails() {
       {car.imagePath && (
         <div>
           <h3>Фото автомобіля</h3>
-          <img src={`http://192.168.10.110:3001/${car.imagePath}`} alt="Car" />
+          <img src={`/${car.imagePath}`} alt="Car" />
         </div>
       )}
       <h2>Деталі автомобіля</h2>
