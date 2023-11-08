@@ -8,15 +8,12 @@ function HomePage() {
     return (
         <div className="App">
           <Header />
-          
             <div className="home-page row d-flex ">
               <div className="col-4 d-flex justify-content-center">
                 <News />
               </div>
               <div className="col-8">
                 <CarOffers />
-              {/* </div> */}
-              {/* <div className="col-4 d-flex justify-content-center"> */}
                 <Requests />
               </div>
             </div>

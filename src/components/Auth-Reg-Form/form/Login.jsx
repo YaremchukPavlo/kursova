@@ -65,7 +65,7 @@ function Login() {
             </Form.Group>
 
             <div className='d-grid mt-4'>
-              <Button variant='primary' type='submit'>
+              <Button  type='submit' className='loginbtn' style={{ backgroundColor: 'rgb(103, 86, 70)' }}>
                 Login
               </Button>
             </div>
@@ -74,10 +74,10 @@ function Login() {
           {errorMessage && <p className='text-danger mt-3'>{errorMessage}</p>}
 
           <div className='text-center mt-3'>
-            <Link to='/reset-password'>Forgot Password?</Link>
+            <Link to='/reset-password' className='link1'>Forgot Password?</Link>
           </div>
           <div className='text-center mt-3'>
-            Don't have an account? <Link to='/signup'>Sign Up</Link>
+            Don't have an account? <Link to='/question' className='link1'>Sign Up</Link>
           </div>
         </Card.Body>
       </Card>

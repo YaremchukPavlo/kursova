@@ -1,140 +1,112 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { SHA256 } from 'crypto-js';
-import { validateName, validateEmail, validatePassword, validateConfirmPassword } from '../Validation/config';
-import { FormInput } from '../inputs/formControl';
-import { useFormHandlers } from '../formHandlers/formHandlers';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import './formStyle.css';
 
 function SignupMilitary() {
-  const {
-    name,
-    email,
-    password,
-    confirmPassword,
-    nameError,
-    emailError,
-    passwordError,
-    confirmPasswordError,
-    handleNameChange,
-    handleEmailChange,
-    handlePasswordChange,
-    handleConfirmPasswordChange,
-    setName,
-    setEmail,
-    setNameError,
-    setEmailError,
-    setPassword,
-    setPasswordError,
-    setConfirmPassword,
-    setConfirmPasswordError,
-    setSuccessMessage,
-    successMessage,
-  } = useFormHandlers();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    secondName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    type: "zsu",
+  });
 
-  useEffect(() => {
-    const storedUsers = localStorage.getItem('users');
-    if (storedUsers) {
-      const { name, email } = JSON.parse(storedUsers);
-      setName(name);
-      setEmail(email);
-    }
-  }, [setName, setEmail]);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-  
-    setNameError('');
-    setEmailError('');
-    setPasswordError('');
-    setConfirmPasswordError('');
-  
-    const nameValidation = validateName(name);
-    const emailValidation = validateEmail(email);
-    const passwordValidation = validatePassword(password);
-    const confirmPasswordValidation = validateConfirmPassword(password, confirmPassword);
-  
-    setNameError(nameValidation.error);
-    setEmailError(emailValidation.error);
-    setPasswordError(passwordValidation.error);
-    setConfirmPasswordError(confirmPasswordValidation.error);
-  
-    if (
-      nameValidation.isValid &&
-      emailValidation.isValid &&
-      passwordValidation.isValid &&
-      confirmPasswordValidation.isValid
-    ) {
-      const storedUsers = localStorage.getItem('users');
-      const users = storedUsers ? JSON.parse(storedUsers) : [];
-  
-      const existingUser = users.find((user) => user.email === email);
-      if (existingUser) {
-        setEmailError('User with this email already exists');
-        return;
+
+    try {
+      const response = await fetch("/users/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.warn("result", result);
+      } else {
+        console.error("Помилка при відправці даних");
       }
-  
-      const hashedPassword = SHA256(password).toString();
-      const newUser = { name, email, password: hashedPassword };
-      const updatedUsers = [...users, newUser];
-      localStorage.setItem('users', JSON.stringify(updatedUsers));
-  
-      const storedUsernames = localStorage.getItem('usernames');
-      const usernames = storedUsernames ? JSON.parse(storedUsernames) : [];
-      const updatedUsernames = [...usernames, name];
-      localStorage.setItem('usernames', JSON.stringify(updatedUsernames));
-  
-      setSuccessMessage('Registration successful!');
-  
-      setName('');
-      setEmail('');
-      setPassword('');
-      setConfirmPassword('');
+    } catch (error) {
+      console.error("Помилка при відправці запиту", error);
     }
   };
-  
-  
+
   return (
-    <div className="login-container template d-flex justify-content-center align-items-center vh-100 ">
-      <div className="login-card form_container p-5 rounded bg-white">
+    <div className="login-container template d-flex justify-content-center align-items-center vh-100">
+      <div className="login-card form_container p-5 rounded" style={{backgroundColor: 'rgb(225, 214, 155)'}}>
         <form onSubmit={handleFormSubmit}>
-          <h3 className="text-center text-uppercase">Sign Up Military</h3>
-            <FormInput
-                input="text"
-                onChange={handleNameChange}
-                placeholder="Enter your name"
-                error={nameError}
-              />
-
-            <FormInput
-              input="email"
-              name="Email"
-              onChange={handleEmailChange}
-              error={emailError}
+          <h3 className="text-center text-uppercase">Sign Up As Military</h3>
+          <div className="mb-2">
+            <label htmlFor="firstName">First name</label>
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleInputChange}
+              className="form-control"
             />
-
-            <FormInput
-              input="password"
-              name="Password"
-              onChange={handlePasswordChange}
-              error={passwordError}
+          </div>
+          <div className="mb-2">
+            <label htmlFor="secondName">Second name</label>
+            <input
+              type="text"
+              name="secondName"
+              value={formData.secondName}
+              onChange={handleInputChange}
+              className="form-control"
             />
-
-            <FormInput
-              input="confirmPassword"
-              name="Confirm Pass"
-              onChange={handleConfirmPasswordChange}
-              error={confirmPasswordError}
+          </div>
+          <div className="mb-2">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              className="form-control"
             />
+          </div>
+          <div className="mb-2">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              className="form-control"
+            />
+          </div>
+          <div className="mb-2">
+            <label htmlFor="confirmPassword">Confirm password</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleInputChange}
+              className="form-control"
+            />
+          </div>
+        
 
           <div className="d-grid mt-2">
-            <button className="btn btn-primary" type="submit">
+            <button className="link1 btn btn-primary" type="submit" style={{ backgroundColor: 'rgb(103, 86, 70)' }}>
               Register
             </button>
-            {successMessage && <p className='text-success'>{successMessage}</p>}
           </div>
           <p className="text-end mt-2">
-            Already Registered? <Link to="/login" className="ms-2">Login</Link>
+            Already Registered?
+            <Link to="/login" className="ms-2">
+              Login
+            </Link>
           </p>
         </form>
       </div>
