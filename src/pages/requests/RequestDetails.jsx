@@ -38,9 +38,11 @@ function RequestDetails() {
   return (
     <div>
       <h2>Деталі Запиту</h2>
-      <p>Заголовок: {request.title}</p>
-      <p>Опис: {request.description}</p>
-      <p>Статус: {request.status}</p>
+      <p>User: {request.userEmail}</p>
+      <p>Car Marc: {request.carMark}</p>
+      <p>Car Model: {request.carModel}</p>
+      <p>Date: {request.dateTime}</p>
+      <p>Status: {request.status}</p>
     </div>
   );
 }
