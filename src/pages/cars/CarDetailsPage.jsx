@@ -78,9 +78,14 @@ function CarDetails() {
             <p className="card-text">Тип автомобіля: {car.carType}</p>
             <p className="card-text">Тип приводу: {car.driveType}</p>
           <div className="col-5 d-grid mt-2 align-self-stretch">
-                <button className="btn btn-primary" type="submit" style={{ backgroundColor: 'rgb(103, 86, 70)' }} onClick={() => setShowModal(true)}>
-                {/* <Link to={{ pathname: "/req-pur", state: { carDetails: car } }} className="ms-2" style={{ textDecoration: 'none', color: '#000' }}>Add request</Link> */}
-              rar</button>
+          <button
+              className="btn btn-primary"
+              type="button"
+              style={{ backgroundColor: 'rgb(103, 86, 70)' }}
+              onClick={() => setShowModal(true)}
+            >
+              Open Modal
+            </button>
               </div>
             </div>
             <div className="col-6 w-100">
@@ -88,14 +93,17 @@ function CarDetails() {
                   <img className="card-img-top" src={`/${car.imagePath}`} alt="Car" style={{ maxWidth: '65%', height: 'auto' }} />
                 )}
             </div>
-            <RequestModal
+            
+          </form>
+          <RequestModal
         showModal={showModal}
         handleCloseModal={handleCloseModal}
         handleSaveRequest={handleSaveRequest}
         formData={formData}
         setFormData={setFormData}
+        carModel={car.model} // передаємо дані моделі
+        carMark={car.mark}  // передаємо дані марки
       />
-          </form>
         </div>
       </div>
   );
