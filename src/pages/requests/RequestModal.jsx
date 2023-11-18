@@ -17,7 +17,7 @@ const RequestModal = ({
 
     // Тут ви можете викликати функцію для відправки запиту на сервер з formData
     // Наприклад, використовуючи fetch або іншу бібліотеку для HTTP запитів
-    fetch('/api/submit-request', {
+    fetch('/requests/send', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,8 +47,8 @@ const RequestModal = ({
             <Form.Control
               type="email"
               placeholder="Enter your email"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              value={formData.userEmail}
+              onChange={(e) => setFormData({ ...formData, userEmail: e.target.value })}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formCarModel">
