@@ -1,36 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import img1 from "./NewsImages/1.jpg";
+import img2 from "./NewsImages/2.jpg";
+import img3 from './NewsImages/3.png'
+import "./NewsDetail.css";
 function News() {
   const news = [
     {
       id: 1,
       title: "Росіяни вдарили ракетою по Селидовому на Донеччині: є загибла, під завалами шукають людей",
-      content: "Лорем іпсум текст для першої новини.",
-      image: './News-images/1.jpg',
+      image: img1,
     },
     {
       id: 2,
-      title: "Новина 2",
-      content: "Лорем іпсум текст для другої новини.",
-      image: 'images/image2.jpg',
+      title: "У Львівській політехніці заявили, що підстав для звільнення Фаріон нема",
+      image: img2,
     },
     {
       id: 3,
-      title: "Новина 3",
-      content: "Лорем іпсум текст для третьої новини.",
-      image: 'images/image3.jpg',
+      title: "Розкрито ще одну унікальну особливість iPhone 2024 року",
+      image: img3,
     },
   ];
 
   return (
     <div className='row d-flex justify-content-center m-1'>
       <h2 className='text-center'>Новини</h2>
-      {news.map((item, index) => (
-        <div key={index} className="news-item col-10 card card-body p-3 m-2">
+      {news.map((item) => (
+        <div key={item.id} className="news-item col-10 card card-body p-3 m-2">
           <h5>{item.title}</h5>
-          <img src={item.image[index]} alt={`Зображення для ${item.title}`} className="img-fluid" />
-          <Link to={`/news-details/${item.id}`} className='d-flex justify-content-end'>
+          <img src={item.image} alt={`Зображення для ${item.title}`} className="img-fluid" style={{
+                  width: "100%",
+                  height: "100%",
+                }}/>
+          <Link to={`/news-details/${item.id}`} className='link d-flex justify-content-end p-2'>
             <p>Читати</p>
           </Link>
         </div>

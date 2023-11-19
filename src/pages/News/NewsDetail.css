@@ -65,4 +65,8 @@
   .btn-primary {
     background-color: rgb(103, 86, 70);
   }
+  .link {
+    text-decoration: none;
+    color: #000;
+  }
   
