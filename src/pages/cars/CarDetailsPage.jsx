@@ -65,18 +65,18 @@ function CarDetails() {
     <div>
       <HeaderLite />
         <div className="car-det-card form_container p-5 rounded " style={{ backgroundColor: 'rgb(225, 214, 155)', height: '655px' }}>
-          <form className=" d-flex justify-content-between">
-            <div className="col-3 d-flex flex-column align-items-start">
+          <form className="col-10 d-flex ">
+            <div className="col-4 d-flex flex-column align-items-start">
             <h2 className="card-title ">Деталі автомобіля</h2>
-            <p className="card-text">Марка: {car.mark}</p>
-            <p className="card-text">Модель: {car.model}</p>
-            <p className="card-text">Рік випуску: {car.year}</p>
-            <p className="card-text">Об'єм двигуна: {car.engineCapacity}</p>
-            <p className="card-text">Тип кузова: {car.bodyType}</p>
-            <p className="card-text">Вага: {car.weight}</p>
-            <p className="card-text">Тип пального: {car.fuelType}</p>
-            <p className="card-text">Тип автомобіля: {car.carType}</p>
-            <p className="card-text">Тип приводу: {car.driveType}</p>
+            <p className="card-text">Марка: <em>{car.mark}</em></p>
+            <p className="card-text">Модель: <em>{car.model}</em></p>
+            <p className="card-text">Рік випуску: <em>{car.year}</em></p>
+            <p className="card-text">Об'єм двигуна: <em>{car.engineCapacity}</em></p>
+            <p className="card-text">Тип кузова: <em>{car.bodyType}</em></p>
+            <p className="card-text">Вага: <em>{car.weight}</em></p>
+            <p className="card-text">Тип пального: <em>{car.fuelType}</em></p>
+            <p className="card-text">Тип автомобіля: <em>{car.carType}</em></p>
+            <p className="card-text">Тип приводу: <em>{car.driveType}</em></p>
           <div className="col-5 d-grid mt-2 align-self-stretch">
           <button
               className="btn btn-primary"
@@ -88,12 +88,11 @@ function CarDetails() {
             </button>
               </div>
             </div>
-            <div className="col-6 w-100">
+            <div className="col-6 w-400 justify-content-start">
                 {car.imagePath && (
-                  <img className="card-img-top1" src={`/${car.imagePath}`} alt="Car" style={{ maxWidth: '65%', height: 'auto' }} />
+                  <img className="card-img-top1" src={`/${car.imagePath}`} alt="Car" style={{ maxWidth: '800px', height: 'auto' }} />
                 )}
             </div>
-            
           </form>
           <RequestModal
         showModal={showModal}
