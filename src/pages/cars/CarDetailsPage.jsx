@@ -90,7 +90,7 @@ function CarDetails() {
             </div>
             <div className="col-6 w-100">
                 {car.imagePath && (
-                  <img className="card-img-top" src={`/${car.imagePath}`} alt="Car" style={{ maxWidth: '65%', height: 'auto' }} />
+                  <img className="card-img-top1" src={`/${car.imagePath}`} alt="Car" style={{ maxWidth: '65%', height: 'auto' }} />
                 )}
             </div>
             

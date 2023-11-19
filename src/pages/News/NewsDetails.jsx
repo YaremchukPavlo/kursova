@@ -52,7 +52,7 @@ function NewsDetail() {
     <div className="first">
       <HeaderLite />
       <div className="news-detail-container form_container p-5 rounded">
-        <form className="">
+        <form className="f">
           <div className="d-flex justify-content-between m-2">
             <div className="col-6 d-flex flex-column align-items-start">
               <h2 className="card-title">{newsItem.title}</h2>
