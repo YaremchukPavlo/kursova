@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import HeaderLite from "../../components/header_lite";
 
 function RequestDetails() {
   const { id } = useParams();
@@ -37,12 +38,32 @@ function RequestDetails() {
 
   return (
     <div>
-      <h2>Деталі Запиту</h2>
-      <p>User: {request.userEmail}</p>
-      <p>Car Marc: {request.carMark}</p>
-      <p>Car Model: {request.carModel}</p>
-      <p>Date: {request.dateTime}</p>
-      <p>Status: {request.status}</p>
+      <HeaderLite />
+      <div
+        className="car-det-card form_container p-5 rounded "
+        style={{ backgroundColor: "rgb(225, 214, 155)", height: "655px" }}
+      >
+        <form className="col-10 d-flex ">
+          <div className="col-8 d-flex flex-column align-items-start">
+            <h2>Request details</h2>
+            <p>User: <em>{request.userEmail}</em></p>
+            <p>Car Marc: <em>{request.carMark}</em></p>
+            <p>Car Model: <em>{request.carModel}</em></p>
+            <p>Date: <em>{request.dateTime}</em></p>
+            <p>Status: <em>{request.status}</em></p>
+            <div className="col-5 d-grid mt-2 align-self-stretch">
+              <button
+                className="btn btn-primary"
+                type="button"
+                style={{ backgroundColor: "rgb(103, 86, 70)" }}
+                // onClick={() => setShowModal(true)}
+              >
+                LOLOLOLOLO
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
