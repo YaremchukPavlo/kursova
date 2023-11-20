@@ -41,7 +41,7 @@
     ]
   },
 
-  "proxy": "https://kursova-d24696b1001b.herokuapp.com",
+  "proxy": "http://192.168.0.103:3001",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "keywords": [],
