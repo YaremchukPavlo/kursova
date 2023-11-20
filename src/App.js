@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CarForm from './pages/cars/AddCar';
 import CarDetailsPage from './pages/cars/CarDetailsPage';
 import RequestDetails from './pages/requests/RequestDetails';
-import UserProfile from './pages/UserProfile';
+import UserProfile from './pages/User/UserProfile';
 import NewsDetail from './pages/News/NewsDetails';
 // import RequestPurchasing from './pages/requests/RequestModal ';
 
