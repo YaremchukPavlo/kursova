@@ -10,9 +10,51 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
+  // const handleFormSubmit = async (e) => {
+  //   e.preventDefault();
+  
+  //   try {
+  //     const response = await fetch('/users/login', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ email, password }),
+  //     });
+  
+  //     if (response.ok) {
+  //       const result = await response.json();
+  
+  //       // Check if the userType property exists in the result object
+  //       if ('userType' in result) {
+  //         const userType = result.user.type;
+  
+  //         // Redirect based on user type
+  //         if (userType === 'ZSU') {
+  //           navigate('/military-dashboard'); // Replace with your military dashboard route
+  //         } else if (userType === 'volunteer') {
+  //           navigate('/volunteer-dashboard'); // Replace with your volunteer dashboard route
+  //         } else {
+  //           // Default redirect if user type is unknown or not provided
+  //           navigate('/');
+  //         }
+  //       } else {
+  //         // Handle the case where userType is not present in the response
+  //         console.error('User type not found in the response:', result);
+  //         // You may want to set a default redirect here if needed
+  //         navigate('/');
+  //       }
+  //     } else {
+  //       const errorData = await response.json();
+  //       setErrorMessage(errorData.message);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error sending request', error);
+  //   }
+  // };
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await fetch('/users/login', {
         method: 'POST',
@@ -21,38 +63,46 @@ function Login() {
         },
         body: JSON.stringify({ email, password }),
       });
-  
+
       if (response.ok) {
         const result = await response.json();
-  
-        // Check if the userType property exists in the result object
-        if ('userType' in result) {
-          const userType = result.user.type;
-  
+        console.log(result);
+        if (result.message) {
+          // if ('userType' in result) {
+          const userType = result.message.type; // Fix the typo here (result.user.type to result.userType)
+          const userId = result.message.id; // Fix the typo here (result.user.type to result.userType)
+
+          // Store email and user type in local storage
+          localStorage.setItem('email', email);
+          localStorage.setItem('userType', userType);
+          localStorage.setItem('id', userId);
+
+
+          console.log(userType);
+
           // Redirect based on user type
           if (userType === 'ZSU') {
-            navigate('/military-dashboard'); // Replace with your military dashboard route
+            navigate('/');
           } else if (userType === 'volunteer') {
-            navigate('/volunteer-dashboard'); // Replace with your volunteer dashboard route
+            navigate('/');
           } else {
-            // Default redirect if user type is unknown or not provided
             navigate('/');
           }
         } else {
-          // Handle the case where userType is not present in the response
           console.error('User type not found in the response:', result);
-          // You may want to set a default redirect here if needed
           navigate('/');
         }
       } else {
-        const errorData = await response.json();
-        setErrorMessage(errorData.message);
+        const errorData = await response.text(); // Use response.text() to log the entire response text
+        console.error('Error response data:', errorData);
+        setErrorMessage('An error occurred during login.');
       }
     } catch (error) {
       console.error('Error sending request', error);
+      setErrorMessage('An error occurred during login.');
     }
   };
-  
+
   
 
   return (

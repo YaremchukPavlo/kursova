@@ -7,9 +7,21 @@
     max-width: 400px;
     width: 100%;
     margin-top: 50px;
+    margin-bottom: 50px;
     border: none;
     border-radius: 10px;
-    background-color: #9e8d8d;
+    background-color: rgb(225, 214, 155);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s;
+  }
+  .login-card-car {
+    max-width: 800px;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(225, 214, 155);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1s;
   }

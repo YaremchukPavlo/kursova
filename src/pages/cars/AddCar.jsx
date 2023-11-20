@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import './addcar.css'
+// import './addcar.css'
+import '../../components/Auth-Reg-Form/form/formStyle.css';
+
 
 function CarForm() {
   const [formData, setFormData] = useState({
@@ -75,10 +77,12 @@ function CarForm() {
   }
 
   return (
-    <div className="container mt-5">
-      <h2 className="text-center mb-4">Додати автомобіль</h2>
-      {successMessage && <p className="text-success mt-2">{successMessage}</p>}
+    <div className='login-container template d-flex justify-content-center align-items-center px-1500'>
+
+    <div className="login-card-car form_containerQ p-5 rounded">
       <form onSubmit={handleSubmit} encType="multipart/form-data">
+      {successMessage && <p className="text-success mt-2">{successMessage}</p>}
+      <h2 className="text-center mb-4">Додати автомобіль</h2>
         <div className="mb-3">
           <label htmlFor="mark" className="form-label">Марка:</label>
           <input
@@ -132,7 +136,7 @@ function CarForm() {
             name="bodyType"
             value={formData.bodyType}
             onChange={handleInputChange}
-          />
+            />
         </div>
         <div className="mb-3">
           <label htmlFor="weight" className="form-label">Вага:</label>
@@ -154,7 +158,7 @@ function CarForm() {
             name="fuelType"
             value={formData.fuelType}
             onChange={handleInputChange}
-          />
+            />
         </div>
         <div className="mb-3">
           <label htmlFor="carType" className="form-label">Тип автомобіля:</label>
@@ -165,7 +169,7 @@ function CarForm() {
             name="carType"
             value={formData.carType}
             onChange={handleInputChange}
-          />
+            />
         </div>
         <div className="mb-3">
           <label htmlFor="driveType" className="form-label">Тип приводу:</label>
@@ -176,7 +180,7 @@ function CarForm() {
             name="driveType"
             value={formData.driveType}
             onChange={handleInputChange}
-          />
+            />
         </div>
         <div className="mb-3">
           <label htmlFor="image" className="form-label">Зображення:</label>
@@ -191,6 +195,7 @@ function CarForm() {
         <button type="submit" className="btn btn-primary">Додати автомобіль</button>
       </form>
     </div>
+            </div>
   );
 }
 

@@ -56,7 +56,6 @@ function RequestDetails() {
                 className="btn btn-primary"
                 type="button"
                 style={{ backgroundColor: "rgb(103, 86, 70)" }}
-                // onClick={() => setShowModal(true)}
               >
                 LOLOLOLOLO
               </button>

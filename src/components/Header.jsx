@@ -2,8 +2,31 @@ import React from "react";
 import "../App.css";
 import Login from "../components/Auth-Reg-Form/form/Login"
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function Header() {
+  const userEmail = localStorage.getItem('email');
+  const userType = localStorage.getItem('userType');
+
+  const handleProfileClick = () => {
+    // Redirect to the profile page if the user is logged in
+    if (userEmail && userType) {
+      // Update the path based on your route configuration
+      // For example, if your profile route is '/profile', use:
+      window.location.href = '/user-profile';
+    } else {
+      // Redirect to the login page if not logged in
+      window.location.href = '/login';
+    }
+  };
+
+  useEffect(() => {
+    // Cleanup function to remove items from local storage on component unmount
+    return () => {
+      // localStorage.removeItem('userEmail');
+      // localStorage.removeItem('userType');
+    };
+  }, []);
   return (
     <header className="header">
       <div className="d-flex justify-content-between align-items-center">
@@ -12,10 +35,13 @@ function Header() {
           <button className="m-1">Requests</button>
           <input type="text" />
           <button ><Link to='/add-car' className="link1">ADDDD</Link></button>
-          <Link
+          {/* <Link
             to='/login'
             className="btn  buton-acc"
-          >
+          > */}
+           {/* <button onClick={handleProfileClick}> */}
+            
+            <Link to={(userEmail) ? '/user-profile' : '/login' } className="link1"> 
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="30"
@@ -30,7 +56,9 @@ function Header() {
                 d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
               />
             </svg>
-          </Link>
+            </Link>
+            {/* </button> */}
+          {/* </Link> */}
         </div>
       </div>
     </header>

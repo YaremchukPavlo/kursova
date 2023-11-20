@@ -6,7 +6,7 @@ function Signup() {
   
   return (
     <div className="login-container template d-flex justify-content-center align-items-center vh-100 ">
-      <div className="login-card form_container p-5 rounded " style={{backgroundColor: 'rgb(225, 214, 155)'}}>
+      <div className="login-card form_containerQ p-5 rounded " style={{backgroundColor: 'rgb(225, 214, 155)'}}>
       <form>
   <h3 className="text-center text-uppercase">You register as a volunteer or military ?</h3>
   <div className="car-offer-item mt-2 d-flex justify-content-between">

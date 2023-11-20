@@ -9,7 +9,7 @@ function SignupMilitary() {
     email: "",
     password: "",
     confirmPassword: "",
-    type: "zsu",
+    type: "ZSU",
   });
 
   const handleInputChange = (e) => {
@@ -42,7 +42,7 @@ function SignupMilitary() {
 
   return (
     <div className="login-container template d-flex justify-content-center align-items-center vh-100">
-      <div className="login-card form_container p-5 rounded" style={{backgroundColor: 'rgb(225, 214, 155)'}}>
+      <div className="login-card form_containerQ p-5 rounded" style={{backgroundColor: 'rgb(225, 214, 155)'}}>
         <form onSubmit={handleFormSubmit}>
           <h3 className="text-center text-uppercase">Sign Up As Military</h3>
           <div className="mb-2">

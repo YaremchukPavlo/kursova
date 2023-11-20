@@ -5,7 +5,7 @@
     margin-top: 270px;
     border: none;
     border-radius: 60px;
-    background-color: #9e8d8d;
+    background-color: #A4895C;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1s;
     display: flex;
@@ -25,4 +25,7 @@
   .link1 {
     width: 100%; /* Make the button full width */
   }
-  
+  .container{
+    background-color: #A4895C;
+
+  }
