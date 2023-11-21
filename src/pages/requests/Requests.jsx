@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Requests() {
   const [data, setData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(4); // Змінено кількість елементів на сторінці на 4
+  const [itemsPerPage] = useState(5); // Змінено кількість елементів на сторінці на 4
 
   useEffect(() => {
     fetch('/requests/all')

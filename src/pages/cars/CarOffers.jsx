@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function CarOffers() {
   const [data, setData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(3);
+  const [itemsPerPage] = useState(5);
 
   useEffect(() => {
     fetch('/cars/list')
@@ -29,7 +29,7 @@ function CarOffers() {
       {data ? (
         <div className="rer col-12">
           {currentItems.map((car, index) => (
-           <div key={index} className="car-offer-item card card-body m-3 d-flex flex-row">
+           <div key={index} className="car-offer-item card card-body col-11 m-3 d-flex flex-row">
            <div className="col-2 p-1 d-flex justify-content-center">{car.mark}</div>
            <div className="col-2 p-1 d-flex justify-content-center">{car.model}</div>
            <div className="col-8 p-1 d-flex justify-content-end"><Link to={`/car-details/${car.id}`} className="link">Переглянути</Link></div>

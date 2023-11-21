@@ -19,28 +19,14 @@ function Header() {
       window.location.href = '/login';
     }
   };
-
-  useEffect(() => {
-    // Cleanup function to remove items from local storage on component unmount
-    return () => {
-      // localStorage.removeItem('userEmail');
-      // localStorage.removeItem('userType');
-    };
-  }, []);
+  const isAuthenticated = userType !== null;
   return (
     <header className="header">
       <div className="d-flex justify-content-between align-items-center">
         <p className="m-0">Military Car Helper</p>
-        <div className="header-buttons">
-          <button className="m-1">Requests</button>
-          <input type="text" />
-          <button ><Link to='/add-car' className="link1">ADDDD</Link></button>
-          {/* <Link
-            to='/login'
-            className="btn  buton-acc"
-          > */}
-           {/* <button onClick={handleProfileClick}> */}
-            
+        <div className="header-buttons align-items-center">
+        {userType === 'volunteer' && 
+          <button className="col-8 align-items-center"><Link to='/add-car' className="link1">Add Car</Link></button>}
             <Link to={(userEmail) ? '/user-profile' : '/login' } className="link1"> 
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -57,8 +43,6 @@ function Header() {
               />
             </svg>
             </Link>
-            {/* </button> */}
-          {/* </Link> */}
         </div>
       </div>
     </header>

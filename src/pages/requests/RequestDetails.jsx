@@ -28,6 +28,38 @@ function RequestDetails() {
       });
   }, [id]);
 
+  const handleAccept = () => {
+    fetch(`/requests/accept-req/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setRequest((prevRequest) => ({ ...prevRequest, status: "Accepted" }));
+      })
+      .catch((error) => {
+        console.error("Error accepting request:", error);
+      });
+  };
+
+  const handleDecline = () => {
+    fetch(`/requests/decline-req/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setRequest((prevRequest) => ({ ...prevRequest, status: "Declined" }));
+      })
+      .catch((error) => {
+        console.error("Error declining request:", error);
+      });
+  };
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -41,23 +73,32 @@ function RequestDetails() {
       <HeaderLite />
       <div
         className="car-det-card form_container p-5 rounded "
-        style={{ backgroundColor: "rgb(225, 214, 155)", height: "655px" }}
+        style={{ backgroundColor: "rgb(225, 214, 155)", height: "675px" }}
       >
         <form className="col-10 d-flex ">
           <div className="col-8 d-flex flex-column align-items-start">
             <h2>Request details</h2>
             <p>User: <em>{request.userEmail}</em></p>
-            <p>Car Marc: <em>{request.carMark}</em></p>
+            <p>Car Mark: <em>{request.carMark}</em></p>
             <p>Car Model: <em>{request.carModel}</em></p>
             <p>Date: <em>{request.dateTime}</em></p>
             <p>Status: <em>{request.status}</em></p>
             <div className="col-5 d-grid mt-2 align-self-stretch">
               <button
-                className="btn btn-primary"
+                className="col-8 btn btn-primary m-1"
                 type="button"
                 style={{ backgroundColor: "rgb(103, 86, 70)" }}
+                onClick={handleAccept}
               >
-                LOLOLOLOLO
+                Accept
+              </button>
+              <button
+                className="col-8 btn btn-primary m-1"
+                type="button"
+                style={{ backgroundColor: "rgb(103, 86, 70)" }}
+                onClick={handleDecline}
+              >
+                Decline
               </button>
             </div>
           </div>

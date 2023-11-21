@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import HeaderLite from "../../components/header_lite"
-import { Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import "./CarDet.css";
 import RequestModal from '../requests/RequestModal'
+import { useNavigate } from "react-router-dom";
 
 function CarDetails() {
   const { id } = useParams();
@@ -17,13 +16,11 @@ function CarDetails() {
     carModel: "",
     carMark: "",
   });
-
-  // Інші функції та ефекти залишаються незмінними
-
-  const handleOpenModal = () => {
-    setShowModal(true);
+  const navigate = useNavigate();
+  
+  const handleReturnToMainPage = () => {
+    navigate("/");
   };
-
   const handleCloseModal = () => {
     setShowModal(false);
   };
@@ -64,7 +61,7 @@ function CarDetails() {
   return (
     <div>
       <HeaderLite />
-        <div className="car-det-card form_container p-5 rounded " style={{ backgroundColor: 'rgb(225, 214, 155)', height: '655px' }}>
+        <div className="car-det-card form_container p-5 rounded " style={{ backgroundColor: 'rgb(225, 214, 155)', height: '675px' }}>
           <form className="col-10 d-flex ">
             <div className="col-4 d-flex flex-column align-items-start">
             <h2 className="card-title ">Деталі автомобіля</h2>
@@ -79,13 +76,20 @@ function CarDetails() {
             <p className="card-text">Тип приводу: <em>{car.driveType}</em></p>
           <div className="col-5 d-grid mt-2 align-self-stretch">
           <button
-              className="btn btn-primary"
+              className="btn btn-primary col-12 m-2"
               type="button"
               style={{ backgroundColor: 'rgb(103, 86, 70)' }}
               onClick={() => setShowModal(true)}
             >
-              Open Modal
+              Send request
             </button>
+            <button
+                    className="btn btn-primary m-2 col-12"
+                    style={{ backgroundColor: "rgb(103, 86, 70)" }}
+                    onClick={handleReturnToMainPage}
+                  >
+                    Go back
+                  </button>
               </div>
             </div>
             <div className="col-6 w-400 justify-content-start">
