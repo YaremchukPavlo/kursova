@@ -87,6 +87,7 @@ function UserProfile() {
               Welcome, {userProfile.firstName}!
             </h3>
             <p>Email: {userProfile.email}</p>
+            <p>You are: {userProfile.type}</p>
             <button onClick={handleLogout}>Logout</button>
             <button onClick={handleReturnToMainPage}>Return to Main Page</button>
           </div>
