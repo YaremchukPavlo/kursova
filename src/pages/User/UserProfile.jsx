@@ -37,7 +37,6 @@ function UserProfile() {
 
         if (response.ok) {
           console.log("Photo successfully uploaded");
-          // Додайте код для оновлення шляху фотографії в базі даних або іншої необхідної логіки
         } else {
           console.error("Error uploading photo");
         }

@@ -1,8 +1,8 @@
 import React from "react";
 import "../../App.css";
-import Header from "../../components/Header"; // Ваш компонент Header
-import News from "../News/News"; // Новий компонент News
-import CarOffers from "../cars/CarOffers"; // Новий компонент CarOffers
+import Header from "../../components/Header";
+import News from "../News/News";
+import CarOffers from "../cars/CarOffers";
 import Requests from "../requests/Requests";
 
 function HPvolunteer() {

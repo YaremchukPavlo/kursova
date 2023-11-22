@@ -124,9 +124,9 @@
     background-color: #c77e00;
   }
   .link{
-    text-decoration: none; /* Прибрати підкреслення */
-    color: #000; /* Змінити колір тексту ссилок на чорний */}
+    text-decoration: none; 
+    color: #000; }
     .link1{
-      text-decoration: none; /* Прибрати підкреслення */
-      color: #ffffff; /* Змінити колір тексту ссилок на чорний */}
+      text-decoration: none; 
+      color: #ffffff; }
   

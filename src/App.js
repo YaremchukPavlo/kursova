@@ -1,6 +1,5 @@
 import './App.css';
 import Login from './components/Auth-Reg-Form/form/Login';
-import Signup from './components/Auth-Reg-Form/form/Signup';
 import Password from './components/Auth-Reg-Form/form/password';
 import HomePage from './pages/HomePages/HomePage';
 import Question from "./components/Auth-Reg-Form/form/Question";
@@ -13,7 +12,6 @@ import RequestDetails from './pages/requests/RequestDetails';
 import UserProfile from './pages/User/UserProfile';
 import NewsDetail from './pages/News/NewsDetails';
 import HPgues from './pages/HomePages/HPgues';
-// import RequestPurchasing from './pages/requests/RequestModal ';
 
 function App() {
   return (
@@ -24,7 +22,6 @@ function App() {
           <Route path='/question' element={<Question/>}/>
           <Route path='/add-car' element={<CarForm />} />
           <Route path='/login' element={<Login/>}/>
-          <Route path='/signup' element={<Signup/>}/>
           <Route path='/signup-military' element={<SignupMilitary/>}/>
           <Route path='/signup-volunteer' element={<SignupVolunteer/>}/>
           <Route path='/reset-password' element={<Password/>}/>
@@ -35,7 +32,6 @@ function App() {
           <Route path='/hp-gues' element={<HPgues/>}/>
         </Routes>
       </Router>
-      
     </div>
   );
 }

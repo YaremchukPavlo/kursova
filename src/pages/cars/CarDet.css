@@ -1,7 +1,7 @@
 .car-det-container {
     max-width: 1300px;
     width: 100%;
-    margin: 0 auto; /* Center horizontally */
+    margin: 0 auto; 
     margin-top: 270px;
     border: none;
     border-radius: 60px;
@@ -9,7 +9,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1s;
     display: flex;
-    align-items: center; /* Center vertically */
+    align-items: center; 
   }
   
   .car-det-card {
@@ -19,18 +19,18 @@
   }
   
   .card-img-top1 {
-    max-width: 60%; /* Make sure the image doesn't exceed the card width */
+    max-width: 60%; 
   }
   
   .link1 {
-    width: 100%; /* Make the button full width */
+    width: 100%;
   }
   .container{
     background-color: #A4895C;
 
   }
   .user-photo-container {
-    width: 200px; /* Задайте бажану ширину та висоту */
+    width: 200px;
     height: 200px;
     overflow: hidden;
     border-radius: 50%;

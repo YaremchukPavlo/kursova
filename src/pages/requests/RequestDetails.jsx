@@ -78,11 +78,21 @@ function RequestDetails() {
         <form className="col-10 d-flex ">
           <div className="col-8 d-flex flex-column align-items-start">
             <h2>Request details</h2>
-            <p>User: <em>{request.userEmail}</em></p>
-            <p>Car Mark: <em>{request.carMark}</em></p>
-            <p>Car Model: <em>{request.carModel}</em></p>
-            <p>Date: <em>{request.dateTime}</em></p>
-            <p>Status: <em>{request.status}</em></p>
+            <p>
+              User: <em>{request.userEmail}</em>
+            </p>
+            <p>
+              Car Mark: <em>{request.carMark}</em>
+            </p>
+            <p>
+              Car Model: <em>{request.carModel}</em>
+            </p>
+            <p>
+              Date: <em>{request.dateTime}</em>
+            </p>
+            <p>
+              Status: <em>{request.status}</em>
+            </p>
             <div className="col-5 d-grid mt-2 align-self-stretch">
               <button
                 className="col-8 btn btn-primary m-1"

@@ -52,7 +52,6 @@
     color: #28a745;
   }
   
-  /* Additional Styling for the form container */
   .form-container {
     max-width: 600px;
     width: 100%;
@@ -95,7 +94,6 @@
     margin-top: 20px;
   }
   
-  /* Media Queries */
   @media (max-width: 576px) {
     .form-container {
       max-width: 90%;

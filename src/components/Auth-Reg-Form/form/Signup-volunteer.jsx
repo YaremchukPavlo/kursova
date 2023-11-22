@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import './formStyle.css';
+import "./formStyle.css";
 
 function SignupVolunteer() {
   const [formData, setFormData] = useState({
@@ -42,7 +42,10 @@ function SignupVolunteer() {
 
   return (
     <div className="login-container template d-flex justify-content-center align-items-center vh-100">
-      <div className="login-card form_containerQ p-5 rounded" style={{backgroundColor: 'rgb(225, 214, 155)'}}>
+      <div
+        className="login-card form_containerQ p-5 rounded"
+        style={{ backgroundColor: "rgb(225, 214, 155)" }}
+      >
         <form onSubmit={handleFormSubmit}>
           <h3 className="text-center text-uppercase">Sign Up As Volonteer</h3>
           <div className="mb-2">
@@ -95,10 +98,13 @@ function SignupVolunteer() {
               className="form-control"
             />
           </div>
-        
 
           <div className="d-grid mt-2">
-            <button className="btn btn-primary" type="submit" style={{ backgroundColor: 'rgb(103, 86, 70)' }}>
+            <button
+              className="btn btn-primary"
+              type="submit"
+              style={{ backgroundColor: "rgb(103, 86, 70)" }}
+            >
               Register
             </button>
           </div>

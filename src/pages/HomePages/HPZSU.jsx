@@ -1,14 +1,11 @@
-import React from 'react';
-import '../../App.css';
-import Header from '../../components/Header';
-import News from '../News/News';
-import CarOffers from '../cars/CarOffers';
-import Requests from '../requests/Requests';
+import React from "react";
+import "../../App.css";
+import Header from "../../components/Header";
+import News from "../News/News";
+import CarOffers from "../cars/CarOffers";
 
 function HPZSU() {
-  const userType = localStorage.getItem('userType');
-
-  // Fake static site statistics
+  const userType = localStorage.getItem("userType");
   const siteStatistics = {
     totalUsers: 1000,
     totalCarsListed: 500,
@@ -24,15 +21,14 @@ function HPZSU() {
         </div>
         <div className="col-8">
           <CarOffers />
-      <div className="card card-body site-statistics m-3">
-        <h2 className='justify-content-center'>Site Statistics</h2>
-        <p>Total Users: {siteStatistics.totalUsers}</p>
-        <p>Total Cars Listed: {siteStatistics.totalCarsListed}</p>
-        <p>Total Requests: {siteStatistics.totalRequests}</p>
-      </div>
+          <div className="card card-body site-statistics m-3">
+            <h2 className="justify-content-center">Site Statistics</h2>
+            <p>Total Users: {siteStatistics.totalUsers}</p>
+            <p>Total Cars Listed: {siteStatistics.totalCarsListed}</p>
+            <p>Total Requests: {siteStatistics.totalRequests}</p>
+          </div>
         </div>
       </div>
-
     </div>
   );
 }
