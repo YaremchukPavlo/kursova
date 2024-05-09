@@ -24,7 +24,7 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup-military' element={<SignupMilitary/>}/>
           <Route path='/signup-volunteer' element={<SignupVolunteer/>}/>
-          <Route path='/reset-password' element={<Password/>}/>
+          {/* <Route path='/reset-password' element={<Password/>}/> */}
           <Route path='/car-details/:id' element={<CarDetailsPage/>}/>
           <Route path='/req-details/:id' element={<RequestDetails/>}/>
           <Route path='/user-profile' element={<UserProfile/>}/>
