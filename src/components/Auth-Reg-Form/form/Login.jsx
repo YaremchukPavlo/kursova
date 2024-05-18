@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./formStyle.css";
 import { Container, Form, Button, Card } from "react-bootstrap";
 
@@ -13,20 +14,19 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch("/users/login", {
-        method: "POST",
+      const response = await axios.post("/auth/login", { email, password }, {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
       });
 
-      if (response.ok) {
-        const result = await response.json();
+      if (response.status === 200) {
+        const result = response.data;
         console.log(result);
-        if (result.message) {
-          const userType = result.message.type;
-          const userId = result.message.id;
+
+        if (result) {
+          const userType = result.user.type;
+          const userId = result.user.id;
 
           localStorage.setItem("email", email);
           localStorage.setItem("userType", userType);
@@ -46,8 +46,7 @@ function Login() {
           navigate("/");
         }
       } else {
-        const errorData = await response.text();
-        console.error("Error response data:", errorData);
+        console.error("Error response data:", response.data);
         setErrorMessage("An error occurred during login.");
       }
     } catch (error) {

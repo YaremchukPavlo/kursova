@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import HeaderLite from "../../components/header_lite";
+import axios from "axios";
 
 function RequestDetails() {
   const { id } = useParams();
@@ -9,23 +10,25 @@ function RequestDetails() {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    fetch(`/requests/one/${id}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+    const fetchData = async () => {
+      setIsError(false);
+      setIsLoading(true);
+
+      try {
+        const response = await axios.get(`/help/simple/${id}`);
+        if (!response.data) {
+          throw new Error("Response data is empty");
         }
-        return response.json();
-      })
-      .then((data) => {
-        setRequest(data.message);
-        setIsLoading(false);
-        setIsError(false);
-      })
-      .catch((error) => {
-        setIsLoading(false);
+        setRequest(response.data.simpleHelpRequest);
+      } catch (error) {
         setIsError(true);
         console.error(error);
-      });
+      }
+
+      setIsLoading(false);
+    };
+
+    fetchData();
   }, [id]);
 
   const handleAccept = () => {
@@ -79,16 +82,16 @@ function RequestDetails() {
           <div className="col-8 d-flex flex-column align-items-start">
             <h2>Request details</h2>
             <p>
-              User: <em>{request.userEmail}</em>
+              User: <em>{request.user_email}</em>
             </p>
             <p>
-              Car Mark: <em>{request.carMark}</em>
+              Car Mark: <em>{request.car_mark}</em>
             </p>
             <p>
-              Car Model: <em>{request.carModel}</em>
+              Car Model: <em>{request.car_model}</em>
             </p>
             <p>
-              Date: <em>{request.dateTime}</em>
+              Date: <em>{request.created_at}</em>
             </p>
             <p>
               Status: <em>{request.status}</em>

@@ -1,5 +1,7 @@
 import React from "react";
+import axios from "axios";
 import { Modal, Button, Form } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
 const RequestModal = ({
   showModal,
@@ -10,18 +12,20 @@ const RequestModal = ({
   carModel,
   carMark,
 }) => {
+  const { id } = useParams(); // Move this outside the function component
+
   const handleSaveRequestAndSend = () => {
     handleSaveRequest();
-    fetch("/requests/send", {
-      method: "POST",
+    console.log(id);
+    return axios.post(`/help/create/${id}`, {
+      "user_email": "test@gmail.com"
+    }, {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Server response:", data);
+      .then((response) => {
+        console.log("Server response:", response.data);
       })
       .catch((error) => {
         console.error("Error sending request to server:", error);
@@ -35,41 +39,7 @@ const RequestModal = ({
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <Form.Group className="mb-3">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter your email"
-              value={formData.userEmail}
-              onChange={(e) =>
-                setFormData({ ...formData, userEmail: e.target.value })
-              }
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formCarModel">
-            <Form.Label>Car Model</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter car model"
-              name="carModel"
-              value={carModel || formData.carModel}
-              onChange={(e) =>
-                setFormData({ ...formData, carModel: e.target.value })
-              }
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formCarMark">
-            <Form.Label>Car Mark</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter car mark"
-              name="carMark"
-              value={carMark || formData.carMark}
-              onChange={(e) =>
-                setFormData({ ...formData, carMark: e.target.value })
-              }
-            />
-          </Form.Group>
+          {/* Form content */}
         </Form>
       </Modal.Body>
       <Modal.Footer>
