@@ -26,32 +26,32 @@ const FiltersAndSearch = () => {
 Filters
 </h2>
 <div className="filter_1 input-group  mt-3 mb-3 col-4" style={{ width: "50%" }}>
-<input type="text" class="form-control" aria-label="Text input with dropdown button"  placeholder="Username"/>
-  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-  <ul class="dropdown-menu dropdown-menu-end">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><hr class="dropdown-divider"/></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
+<input type="text" className="form-control" aria-label="Text input with dropdown button"  placeholder="Username"/>
+  <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+  <ul className="dropdown-menu dropdown-menu-end">
+    <li><a className="dropdown-item" href="#">Action</a></li>
+    <li><a className="dropdown-item" href="#">Another action</a></li>
+    <li><a className="dropdown-item" href="#">Something else here</a></li>
+    <li><hr className="dropdown-divider"/></li>
+    <li><a className="dropdown-item" href="#">Separated link</a></li>
   </ul>
 </div>
 <div className="filter_2 input-group mt-3 mb-3 col-4" style={{ width: "50%" }}>
-  <input type="text" class="form-control" aria-label="Text input with dropdown button"  placeholder="Username"/>
-  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-  <ul class="dropdown-menu dropdown-menu-end">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><hr class="dropdown-divider"/></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  <input type="text" className="form-control" aria-label="Text input with dropdown button"  placeholder="Username"/>
+  <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+  <ul className="dropdown-menu dropdown-menu-end">
+    <li><a className="dropdown-item" href="#">Action</a></li>
+    <li><a className="dropdown-item" href="#">Another action</a></li>
+    <li><a className="dropdown-item" href="#">Something else here</a></li>
+    <li><hr className="dropdown-divider"/></li>
+    <li><a className="dropdown-item" href="#">Separated link</a></li>
   </ul>
 </div>
 <div className="filter_3 input-group  mt-3 mb-3 col-2" style={{ width: "25%" }}>
-<input type="text" class="form-control" aria-label="Text input with dropdown button"  placeholder="Username"/>
+<input type="text" className="form-control" aria-label="Text input with dropdown button"  placeholder="Username"/>
 </div>
 <div className="filter_3 input-group  mt-3 mb-3 col-2" style={{ width: "25%" }}>
-<input type="text" class="form-control" aria-label="Text input with dropdown button"  placeholder="Username"/>
+<input type="text" className="form-control" aria-label="Text input with dropdown button"  placeholder="Username"/>
 </div>
 </div>
 
@@ -60,14 +60,14 @@ Filters
 Sort
 </h2>
 <div className="sort_1 input-group  mt-3 mb-3 col-4" style={{ width: "50%" }}>
-<input type="text" class="form-control" aria-label="Text input with dropdown button"  placeholder="Sort"/>
-  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-  <ul class="dropdown-menu dropdown-menu-end">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><hr class="dropdown-divider"/></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
+<input type="text" className="form-control" aria-label="Text input with dropdown button"  placeholder="Sort"/>
+  <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+  <ul className="dropdown-menu dropdown-menu-end">
+    <li><a className="dropdown-item" href="#">Action</a></li>
+    <li><a className="dropdown-item" href="#">Another action</a></li>
+    <li><a className="dropdown-item" href="#">Something else here</a></li>
+    <li><hr className="dropdown-divider"/></li>
+    <li><a className="dropdown-item" href="#">Separated link</a></li>
   </ul>
 </div>
 </div>
