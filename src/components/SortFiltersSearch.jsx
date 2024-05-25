@@ -1,9 +1,10 @@
 import React from "react";
+import { Button } from "bootstrap";
 
 const FiltersAndSearch = () => {
   return (
     <div>
-      <div className="input-group mt-3">
+      <div className="Search mt-3 col-10">
         <input
           type="text"
           className="form-control"
@@ -12,7 +13,7 @@ const FiltersAndSearch = () => {
           aria-describedby="button-addon2"
         />
         <button
-          className="btn btn-outline-secondary"
+          className="btn btn-outline-secondary col-2"
           type="button"
           id="button-addon2"
         >
@@ -21,37 +22,26 @@ const FiltersAndSearch = () => {
       </div>
 
 
+
+
 <div className="filters row d-flex ">
 <h2 className="d-flex justify-content-start mt-3">
 Filters
 </h2>
 <div className="filter_1 input-group  mt-3 mb-3 col-4" style={{ width: "50%" }}>
-<input type="text" class="form-control" aria-label="Text input with dropdown button"  placeholder="Username"/>
-  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-  <ul class="dropdown-menu dropdown-menu-end">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><hr class="dropdown-divider"/></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
-  </ul>
+<input type="text" class="form-control" aria-label="Text input with dropdown button"  placeholder="Car mark"/>
 </div>
 <div className="filter_2 input-group mt-3 mb-3 col-4" style={{ width: "50%" }}>
-  <input type="text" class="form-control" aria-label="Text input with dropdown button"  placeholder="Username"/>
-  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-  <ul class="dropdown-menu dropdown-menu-end">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><hr class="dropdown-divider"/></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
-  </ul>
+<input type="text" class="form-control" aria-label="Text input with dropdown button"  placeholder="Car model"/>
 </div>
 <div className="filter_3 input-group  mt-3 mb-3 col-2" style={{ width: "25%" }}>
-<input type="text" class="form-control" aria-label="Text input with dropdown button"  placeholder="Username"/>
+<input type="text" class="form-control" aria-label="Text input with dropdown button"  placeholder="Year down"/>
 </div>
 <div className="filter_3 input-group  mt-3 mb-3 col-2" style={{ width: "25%" }}>
-<input type="text" class="form-control" aria-label="Text input with dropdown button"  placeholder="Username"/>
+<input type="text" class="form-control" aria-label="Text input with dropdown button"  placeholder="Year up"/>
+</div>
+<div className="filter_3 input-group  mt-3 mb-3 col-4" style={{ width: "50%" }}>
+<button class="btn btn-outline-secondary" type="button">Filter</button>
 </div>
 </div>
 
@@ -77,3 +67,6 @@ Sort
 };
 
 export default FiltersAndSearch;
+
+
+

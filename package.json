@@ -2,6 +2,12 @@
   "name": "my-progect-kurs-4",
   "version": "0.1.0",
   "private": true,
+  "devServer": {
+    "compress": true,
+    "disableHostCheck": true,
+    "allowedHosts": "all"
+
+ } ,
   "dependencies": {
     "@react-google-maps/api": "^2.19.3",
     "@testing-library/jest-dom": "^5.17.0",
