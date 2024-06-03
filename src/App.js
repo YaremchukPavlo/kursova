@@ -12,6 +12,7 @@ import RequestDetails from './pages/requests/RequestDetails';
 import UserProfile from './pages/User/UserProfile';
 import NewsDetail from './pages/News/NewsDetails';
 import HPgues from './pages/HomePages/HPgues';
+import FiltersAndSearch from './components/SortFiltersSearch';
 
 function App() {
   return (
@@ -24,12 +25,12 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup-military' element={<SignupMilitary/>}/>
           <Route path='/signup-volunteer' element={<SignupVolunteer/>}/>
-          {/* <Route path='/reset-password' element={<Password/>}/> */}
           <Route path='/car-details/:id' element={<CarDetailsPage/>}/>
           <Route path='/req-details/:id' element={<RequestDetails/>}/>
           <Route path='/user-profile' element={<UserProfile/>}/>
           <Route path='/news-details/:id' element={<NewsDetail/>}/>
           <Route path='/hp-gues' element={<HPgues/>}/>
+          <Route path='/SFS' element={<FiltersAndSearch/>}/>
         </Routes>
       </Router>
     </div>

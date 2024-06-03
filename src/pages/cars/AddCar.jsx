@@ -1,24 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../components/Auth-Reg-Form/form/formStyle.css";
+import axios from "axios";
 
 function CarForm() {
   const [formData, setFormData] = useState({
     mark: "",
     model: "",
     year: "",
-    engineCapacity: "",
-    bodyType: "",
+    engine_capacity: "",
+    body_type: "",
     weight: "",
-    fuelType: "",
-    carType: "",
-    driveType: "",
+    fuel_type: "",
+    car_type: "",
+    drive_type: "",
   });
   const [successMessage, setSuccessMessage] = useState("");
+  const [userId, setUserId] = useState("");
   const [image, setImage] = useState(null); 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  useEffect(() => {
+    // userId = 
+    setUserId(localStorage.getItem('id'))
+  })
 
   const handleImageChange = (e) => {
     setImage(e.target.files[0]); 
@@ -43,9 +50,8 @@ function CarForm() {
         formDataWithImage.append("image", image);
       }
 
-      const response = await fetch("/cars/add-car", {
+      const response = await axios.post("/cars/create", formDataWithImage, {
         method: "POST",
-        body: formDataWithImage,
       });
 
       if (response.ok) {
@@ -76,11 +82,12 @@ function CarForm() {
   return (
     <div className="login-container template d-flex justify-content-center align-items-center px-1500">
       <div className="login-card-car form_containerQ p-5 rounded">
+        {userId}
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           {successMessage && (
-            <p className="text-success mt-2">{successMessage}</p>
+            <p className="text-success mt-2">{successMessage} </p>
           )}
-          <h2 className="text-center mb-4">Додати автомобіль</h2>
+          <h2 className="text-center mb-4"> {userId} Додати автомобіль</h2>
           <div className="mb-3">
             <label htmlFor="mark" className="form-label">
               Марка:

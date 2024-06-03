@@ -1,37 +1,35 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./formStyle.css";
 
 function SignupVolunteer() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    secondName: "",
+    first_name: "",
+    second_name: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    confirm_password: "",
     type: "volunteer",
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({...formData, [name]: value });
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("/users/register", {
-        method: "POST",
+      const response = await axios.post("/auth/registration", formData, {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        const result = await response.json();
-        console.warn("result", result);
+      if (response.status === 200) {
+        console.warn("result", response.data);
       } else {
         console.error("Помилка при відправці даних");
       }
@@ -49,21 +47,21 @@ function SignupVolunteer() {
         <form onSubmit={handleFormSubmit}>
           <h3 className="text-center text-uppercase">Sign Up As Volonteer</h3>
           <div className="mb-2">
-            <label htmlFor="firstName">First name</label>
+            <label htmlFor="first_name">First name</label>
             <input
               type="text"
-              name="firstName"
-              value={formData.firstName}
+              name="first_name"
+              value={formData.first_name}
               onChange={handleInputChange}
               className="form-control"
             />
           </div>
           <div className="mb-2">
-            <label htmlFor="secondName">Second name</label>
+            <label htmlFor="second_name">Second name</label>
             <input
               type="text"
-              name="secondName"
-              value={formData.secondName}
+              name="second_name"
+              value={formData.second_name}
               onChange={handleInputChange}
               className="form-control"
             />
@@ -89,11 +87,11 @@ function SignupVolunteer() {
             />
           </div>
           <div className="mb-2">
-            <label htmlFor="confirmPassword">Confirm password</label>
+            <label htmlFor="confirm_password">Confirm password</label>
             <input
               type="password"
-              name="confirmPassword"
-              value={formData.confirmPassword}
+              name="confirm_password"
+              value={formData.confirm_password}
               onChange={handleInputChange}
               className="form-control"
             />
@@ -101,7 +99,7 @@ function SignupVolunteer() {
 
           <div className="d-grid mt-2">
             <button
-              className="btn btn-primary"
+              className="link1 btn btn-primary"
               type="submit"
               style={{ backgroundColor: "rgb(103, 86, 70)" }}
             >
