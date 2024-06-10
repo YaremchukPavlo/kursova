@@ -1,18 +1,16 @@
 import React from "react";
 import axios from "axios";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
-const RequestModal = ({
+const ConfirmationModal = ({
   showModal,
   handleCloseModal,
   handleSaveRequest,
-  formData,
-  setFormData,
   carModel,
   carMark,
 }) => {
-  const { id } = useParams(); // Move this outside the function component
+  const { id } = useParams();
 
   const handleSaveRequestAndSend = () => {
     handleSaveRequest();
@@ -35,23 +33,23 @@ const RequestModal = ({
   return (
     <Modal show={showModal} onHide={handleCloseModal}>
       <Modal.Header closeButton>
-        <Modal.Title>Modal Title</Modal.Title>
+        <Modal.Title>Confirmation</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
-          {/* Form content */}
-        </Form>
+        <p>Чи впевнені ви що бажаєте замовити подібне авто?</p>
+        <p>Марка: {carMark}</p>
+        <p>Модель: {carModel}</p>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleCloseModal}>
-          Close
+          Cancel
         </Button>
         <Button variant="primary" onClick={handleSaveRequestAndSend}>
-          Save Request
+          Confirm
         </Button>
       </Modal.Footer>
     </Modal>
   );
 };
 
-export default RequestModal;
+export default ConfirmationModal;

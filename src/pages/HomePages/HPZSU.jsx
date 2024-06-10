@@ -8,7 +8,7 @@ import CustomSlider from "../../components/CustomSlider";
 import iimg1 from "./image1.jpg";
 import iimg2 from "./image2.jpg";
 import iimg3 from "./image2.jpg";
-import FiltersAndSearch from "../../components/SortFiltersSearch"; // Додано імпорт нового файлу
+import backgroundImage from "./back.jpeg";
 
 function HPZSU() {
   const userType = localStorage.getItem("userType");
@@ -25,10 +25,9 @@ function HPZSU() {
   return (
     <div className="App">
       <Header />
-      <div className="home-page row d-flex justify-content-center">
+      <div className="home-page  row d-flex justify-content-center" style={{ backgroundImage: `url(${backgroundImage})` }}>
           <CustomSlider items={sliderItems} />
           <div className="card col-9 justify-content-center mt-5 mb-5" style={{ backgroundColor: "grey" }}>
-          <FiltersAndSearch /> 
           <CarOffers />
           <div className="card card-body site-statistics mb-3">
             <h2 className="justify-content-center">Site Statistics</h2>

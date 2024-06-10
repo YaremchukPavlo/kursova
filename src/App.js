@@ -1,4 +1,5 @@
 import './App.css';
+// import './style1.css';
 import Login from './components/Auth-Reg-Form/form/Login';
 import Password from './components/Auth-Reg-Form/form/password';
 import HomePage from './pages/HomePages/HomePage';
@@ -12,7 +13,6 @@ import RequestDetails from './pages/requests/RequestDetails';
 import UserProfile from './pages/User/UserProfile';
 import NewsDetail from './pages/News/NewsDetails';
 import HPgues from './pages/HomePages/HPgues';
-import FiltersAndSearch from './components/SortFiltersSearch';
 
 function App() {
   return (
@@ -30,7 +30,6 @@ function App() {
           <Route path='/user-profile' element={<UserProfile/>}/>
           <Route path='/news-details/:id' element={<NewsDetail/>}/>
           <Route path='/hp-gues' element={<HPgues/>}/>
-          <Route path='/SFS' element={<FiltersAndSearch/>}/>
         </Routes>
       </Router>
     </div>

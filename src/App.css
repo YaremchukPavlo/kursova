@@ -9,9 +9,9 @@ html {
   background-color: rgb(225, 214, 155);
 
 }
-.card-body{
+/* .card-body{
   background-color: rgb(225, 214, 155);
-}
+} */
 
 .header {
   background-color: rgb(103, 86, 70);
@@ -71,5 +71,8 @@ html {
     text-decoration: none; 
     color: #ffffff; }
 
+    .card{
+      background-color: rgb(172, 164, 119);
+    }
 
   

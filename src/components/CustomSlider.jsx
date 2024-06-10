@@ -15,7 +15,7 @@ const CustomSlider = ({ items }) => {
   // Стилі для зображень у слайдері
   const imageStyles = {
     width: '100%',
-    maxHeight: '180px',
+    maxHeight: '360px',
   };
 
   return (

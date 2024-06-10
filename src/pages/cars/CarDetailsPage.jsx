@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import HeaderLite from "../../components/header_lite";
+import Header from "../../components/Header";
 import "./CarDet.css";
 import RequestModal from "../requests/RequestModal";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import staticImage from "./Static.jpg";
 import { LoadScript, GoogleMap, Marker } from '@react-google-maps/api';
+import backgroundImage from "../HomePages/back.jpeg";
 
 function CarDetails() {
   const { id } = useParams();
@@ -76,13 +78,14 @@ function CarDetails() {
 
   return (
     <div>
-      <HeaderLite />
+      <Header/>
       <div
-        className="car-det-card form_container p-5 rounded"
-        style={{ backgroundColor: "rgb(225, 214, 155)", height: "1400px" }}
+        className="car-det-card form_container p-5 rounded d-flex justify-content-center align-items-center text-center"
+        style={{ backgroundImage: `url(${backgroundImage})`, height: "1400px" }}
       >
-        <form className="col-10 d-flex">
-          <div className="col-4 d-flex flex-column align-items-start">
+        
+        <form className=" col-10 d-flex m-3"  style={{ backgroundColor: "grey", borderRadius: '10px'}}>
+          <div className="col-6 d-flex m-3 p-3 flex-column align-items-start" style={{backgroundColor: 'rgb(172, 164, 119)', borderRadius: '10px'}}>
             <h2 className="card-title">Деталі автомобіля</h2>
             <p className="card-text">
               Марка: <em>{car.mark}</em>
@@ -117,9 +120,11 @@ function CarDetails() {
             <p className="card-text">
               Довгота: <em>{car.lng}</em>
             </p>
-            <div className="col-5 d-grid mt-2 align-self-stretch">
+            <div className="mt-2 col-12 d-flex justify-content-center">
+
+              
               <button
-                className="btn btn-primary col-12 m-2"
+                className="btn btn-primary m-3 "
                 type="button"
                 style={{ backgroundColor: "rgb(103, 86, 70)" }}
                 onClick={() => setShowModal(true)}
@@ -128,7 +133,7 @@ function CarDetails() {
               </button>
               {showEditButton && (
                 <button
-                  className="btn btn-primary m-2 col-12"
+                  className="btn btn-primary"
                   style={{ backgroundColor: "rgb(103, 86, 70)" }}
                   onClick={() => console.log("Edit button clicked")}
                 >
@@ -136,27 +141,49 @@ function CarDetails() {
                 </button>
               )}
               <button
-                className="btn btn-primary m-2 col-12"
+                className="btn btn-primary m-3 "
                 style={{ backgroundColor: "rgb(103, 86, 70)" }}
                 onClick={handleReturnToMainPage}
               >
                 Go back
               </button>
+
             </div>
           </div>
-          <div className="col-6 w-400 justify-content-start">
-            {car.image && (
+
+
+
+
+          <div className="col-5 justify-content-center mt-3" style={{ borderRadius: '10px' }}>
+            {/* {car.image && (
               <img
                 className="card-img-top1"
                 src={`https://diplom-l4nh.onrender.com/uploads/cars/${car.image}`}
                 alt="Car"
                 style={{ maxWidth: "800px", height: "auto" }}
               />
-            )}
+            )} */}
+            {car.image && (
+                    <img
+                      src={staticImage}
+                      alt={car.mark}
+                      style={{ maxWidth: "100%", borderRadius: '10px' }}
+                      className="img-fluid"
+                    />
+                  )}
+                  {!car.image && (
+                    <img
+                      src={staticImage}
+                      alt="Static"
+                      style={{ maxWidth: "100%", borderRadius: '10px' }}
+                      className="img-fluid" 
+                    />
+                  )}
           </div>
+          
         </form>
-        <LoadScript googleMapsApiKey={apiKey}>
-          <div className="col-10">
+        <LoadScript googleMapsApiKey={apiKey} style={{borderRadius: '10px', backgroundColor: "blue"}}>
+          <div className="col-10" style={{borderRadius: '10px', backgroundColor: "blue"}}>
             <GoogleMap
               center={{ lat: car.lat, lng: car.lng }}
               zoom={15}

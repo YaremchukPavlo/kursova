@@ -6,10 +6,10 @@ import Requests from "../requests/Requests";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CustomSlider from "../../components/CustomSlider";
-import iimg1 from "./image1.jpg";
-import iimg2 from "./image2.jpg";
-import iimg3 from "./image2.jpg";
-import FiltersAndSearch from "../../components/SortFiltersSearch"; // Додано імпорт нового файлу
+import iimg1 from "../../components/img1.jpg";
+import iimg2 from "../../components/img2.jpg";
+import iimg3 from "../../components/img3.jpg";
+import backgroundImage from "./back.jpeg";
 
 function HPvolunteer() {
   const userType = localStorage.getItem("userType");
@@ -24,10 +24,9 @@ function HPvolunteer() {
     <div>
       <div className="App">
         <Header />
-        <div className="home-page row d-flex justify-content-center">
+        <div className="home-page row d-flex justify-content-center" style={{ backgroundImage: `url(${backgroundImage})` }}>
           <CustomSlider items={sliderItems} />
           <div className="card col-9 justify-content-center mt-5 mb-5" style={{ backgroundColor: "grey" }}>
-          <FiltersAndSearch /> 
           <CarOffers />
           <Requests />
           </div>
