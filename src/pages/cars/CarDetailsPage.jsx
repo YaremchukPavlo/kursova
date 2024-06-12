@@ -78,14 +78,13 @@ function CarDetails() {
 
   return (
     <div>
-      <Header/>
+      <Header />
       <div
-        className="car-det-card form_container p-5 rounded d-flex justify-content-center align-items-center text-center"
-        style={{ backgroundImage: `url(${backgroundImage})`, height: "1400px" }}
+        className="car-det-card form_container rounded d-flex justify-content-center align-items-center text-center"
+        style={{ backgroundImage: `url(${backgroundImage})`, height: "1200px" }}
       >
-        
-        <form className=" col-10 d-flex m-3"  style={{ backgroundColor: "grey", borderRadius: '10px'}}>
-          <div className="col-6 d-flex m-3 p-3 flex-column align-items-start" style={{backgroundColor: 'rgb(172, 164, 119)', borderRadius: '10px'}}>
+        <form className=" col-10 d-flex m-3" style={{ backgroundColor: "grey", borderRadius: '10px' }}>
+          <div className="col-6 d-flex m-3 p-3 flex-column align-items-start" style={{ backgroundColor: 'rgb(172, 164, 119)', borderRadius: '10px' }}>
             <h2 className="card-title">Деталі автомобіля</h2>
             <p className="card-text">
               Марка: <em>{car.mark}</em>
@@ -122,7 +121,7 @@ function CarDetails() {
             </p>
             <div className="mt-2 col-12 d-flex justify-content-center">
 
-              
+
               <button
                 className="btn btn-primary m-3 "
                 type="button"
@@ -164,26 +163,26 @@ function CarDetails() {
               />
             )} */}
             {car.image && (
-                    <img
-                      src={staticImage}
-                      alt={car.mark}
-                      style={{ maxWidth: "100%", borderRadius: '10px' }}
-                      className="img-fluid"
-                    />
-                  )}
-                  {!car.image && (
-                    <img
-                      src={staticImage}
-                      alt="Static"
-                      style={{ maxWidth: "100%", borderRadius: '10px' }}
-                      className="img-fluid" 
-                    />
-                  )}
+              <img
+                src={staticImage}
+                alt={car.mark}
+                style={{ maxWidth: "100%", borderRadius: '10px' }}
+                className="img-fluid"
+              />
+            )}
+            {!car.image && (
+              <img
+                src={staticImage}
+                alt="Static"
+                style={{ maxWidth: "100%", borderRadius: '10px' }}
+                className="img-fluid"
+              />
+            )}
           </div>
-          
+
         </form>
-        <LoadScript googleMapsApiKey={apiKey} style={{borderRadius: '10px', backgroundColor: "blue"}}>
-          <div className="col-10" style={{borderRadius: '10px', backgroundColor: "blue"}}>
+        <LoadScript googleMapsApiKey={apiKey} style={{ borderRadius: '10px', backgroundColor: "blue" }}>
+          <div className="col-10" style={{ borderRadius: '10px', backgroundColor: "blue" }}>
             <GoogleMap
               center={{ lat: car.lat, lng: car.lng }}
               zoom={15}

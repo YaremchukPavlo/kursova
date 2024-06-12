@@ -40,7 +40,6 @@ const carData = [
         driveType: "8",
         image: img1,
       },
-    // Додайте інші об'єкти з даними про автомобілі за потреби
   ];
   
   export default carData;

@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import HeaderLite from "../../components/header_lite";
+import { useParams, useNavigate } from "react-router-dom";
+import Header from "../../components/Header";
 import axios from "axios";
+import backgroundImage from "../HomePages/back.jpeg";
 
 function RequestDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [request, setRequest] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+
+  const handleReturnToMainPage = () => {
+    navigate("/");
+  };
+
+  const formatDate = (dateString) => {
+    const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    return new Date(dateString).toLocaleDateString('uk-UA', options);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,13 +84,13 @@ function RequestDetails() {
 
   return (
     <div>
-      <HeaderLite />
+      <Header />
       <div
-        className="car-det-card form_container p-5 rounded "
-        style={{ backgroundColor: "rgb(225, 214, 155)", height: "675px" }}
+        className="car-det-card form_container rounded d-flex justify-content-center align-items-center text-center"
+        style={{ backgroundImage: `url(${backgroundImage})`, height: "550px" }}
       >
-        <form className="col-10 d-flex ">
-          <div className="col-8 d-flex flex-column align-items-start">
+        <form className="col-10 d-flex m-3" style={{ backgroundColor: "grey", borderRadius: '10px' }}>
+          <div className="col-6 d-flex m-3 p-3 flex-column align-items-start" style={{ backgroundColor: 'rgb(172, 164, 119)', borderRadius: '10px' }}>
             <h2>Request details</h2>
             <p>
               User: <em>{request.user_email}</em>
@@ -91,7 +102,7 @@ function RequestDetails() {
               Car Model: <em>{request.car_model}</em>
             </p>
             <p>
-              Date: <em>{request.created_at}</em>
+              Date: <em>{formatDate(request.created_at)}</em>
             </p>
             <p>
               Status: <em>{request.status}</em>
@@ -112,6 +123,13 @@ function RequestDetails() {
                 onClick={handleDecline}
               >
                 Decline
+              </button>
+              <button
+                className="col-8 btn btn-primary m-1"
+                style={{ backgroundColor: "rgb(103, 86, 70)" }}
+                onClick={handleReturnToMainPage}
+              >
+                Go back
               </button>
             </div>
           </div>
