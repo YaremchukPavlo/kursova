@@ -1,34 +1,47 @@
+
 import React, { useEffect, useState } from "react";
 import "../../components/Auth-Reg-Form/form/formStyle.css";
 import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
+import { LoadScript, GoogleMap, Marker } from '@react-google-maps/api';
 
 function CarForm() {
   const [formData, setFormData] = useState({
     mark: "",
     model: "",
     year: "",
-    engine_capacity: "",
-    body_type: "",
+    engineCapacity: "",
+    bodyType: "",
     weight: "",
-    fuel_type: "",
-    car_type: "",
-    drive_type: "",
+    fuelType: "",
+    carType: "",
+    driveType: "",
+    lat: "", 
+    lng: ""
   });
   const [successMessage, setSuccessMessage] = useState("");
-  const [userId, setUserId] = useState("");
-  const [image, setImage] = useState(null); 
+  const [errorMessage, setErrorMessage] = useState("");
+  const [image, setImage] = useState(null);
+  const navigate = useNavigate();
+  const handleReturnToMainPage = () => {
+    navigate("/");
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  useEffect(() => {
-    // userId = 
-    setUserId(localStorage.getItem('id'))
-  })
-
   const handleImageChange = (e) => {
-    setImage(e.target.files[0]); 
+    setImage(e.target.files[0]);
+  };
+
+  const handleMapClick = (e) => {
+    setFormData({
+      ...formData,
+      lat: e.latLng.lat(),
+      lng: e.latLng.lng()
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -36,25 +49,17 @@ function CarForm() {
 
     try {
       const formDataWithImage = new FormData();
-      formDataWithImage.append("mark", formData.mark);
-      formDataWithImage.append("model", formData.model);
-      formDataWithImage.append("year", formData.year);
-      formDataWithImage.append("engineCapacity", formData.engineCapacity);
-      formDataWithImage.append("bodyType", formData.bodyType);
-      formDataWithImage.append("weight", formData.weight);
-      formDataWithImage.append("fuelType", formData.fuelType);
-      formDataWithImage.append("carType", formData.carType);
-      formDataWithImage.append("driveType", formData.driveType);
+      for (const key in formData) {
+        formDataWithImage.append(key, formData[key]);
+      }
 
       if (image) {
         formDataWithImage.append("image", image);
       }
 
-      const response = await axios.post("/cars/create", formDataWithImage, {
-        method: "POST",
-      });
+      const response = await axios.post("/cars/create", formDataWithImage);
 
-      if (response.ok) {
+      if (response.status === 201) {
         setFormData({
           mark: "",
           model: "",
@@ -65,16 +70,22 @@ function CarForm() {
           fuelType: "",
           carType: "",
           driveType: "",
+          lat: "",
+          lng: ""
         });
         setImage(null);
 
-        setSuccessMessage("Автомобіль додано успішно!");
+        setSuccessMessage(response.data.message);
+        setErrorMessage(""); // Clear error message
 
         setTimeout(() => {
           setSuccessMessage("");
         }, 3000);
+      } else {
+        setErrorMessage("Помилка при додаванні автомобіля");
       }
     } catch (error) {
+      setErrorMessage("Помилка при додаванні автомобіля");
       console.error("Помилка при додаванні автомобіля:", error);
     }
   };
@@ -82,12 +93,8 @@ function CarForm() {
   return (
     <div className="login-container template d-flex justify-content-center align-items-center px-1500">
       <div className="login-card-car form_containerQ p-5 rounded">
-        {userId}
         <form onSubmit={handleSubmit} encType="multipart/form-data">
-          {successMessage && (
-            <p className="text-success mt-2">{successMessage} </p>
-          )}
-          <h2 className="text-center mb-4"> {userId} Додати автомобіль</h2>
+          <h2 className="text-center mb-4"> Додати автомобіль</h2>
           <div className="mb-3">
             <label htmlFor="mark" className="form-label">
               Марка:
@@ -133,6 +140,7 @@ function CarForm() {
             </label>
             <input
               type="number"
+              step={0.2}
               className="form-control"
               id="engineCapacity"
               name="engineCapacity"
@@ -206,6 +214,32 @@ function CarForm() {
             />
           </div>
           <div className="mb-3">
+            
+            <input
+              type="number"
+              className="form-control"
+              id="lat"
+              name="lat"
+              value={formData.lat}
+              onChange={handleInputChange}
+              readOnly // Make the input read-only
+              hidden
+            />
+          </div>
+          <div className="mb-3">
+
+            <input
+              type="number"
+              className="form-control"
+              id="lng"
+              name="lng"
+              value={formData.lng}
+              onChange={handleInputChange}
+              readOnly // Make the input read-only
+              hidden
+            />
+          </div>
+          <div className="mb-3">
             <label htmlFor="image" className="form-label">
               Зображення:
             </label>
@@ -217,9 +251,36 @@ function CarForm() {
               onChange={handleImageChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <div style={{ height: '400px', width: '100%', marginBottom: '20px' }}>
+            <LoadScript googleMapsApiKey="AIzaSyDcWbZVIM2dhtw4I-tE9ORWQIAEKN11pVA">
+              <GoogleMap
+                mapContainerStyle={{ height: '100%', width: '100%' }}
+                center={{ lat: 48.3794, lng: 31.1656 }} // Center of Ukraine
+                zoom={6}
+                onClick={handleMapClick}
+              >
+                {formData.lat && formData.lng && (
+                  <Marker position={{ lat: parseFloat(formData.lat), lng: parseFloat(formData.lng) }} />
+                )}
+              </GoogleMap>
+            </LoadScript>
+          </div>
+          <button type="submit" className="col-4 btn btn-primary">
             Додати автомобіль
           </button>
+          <button
+                className="col-4 btn btn-primary m-1"
+                style={{ backgroundColor: "rgb(103, 86, 70)" }}
+                onClick={handleReturnToMainPage}
+              >
+                Go back
+              </button>
+          {successMessage && (
+            <p className="text-success mt-2">{successMessage}</p>
+          )}
+          {errorMessage && (
+            <p className="text-danger mt-2">{errorMessage}</p>
+          )}
         </form>
       </div>
     </div>

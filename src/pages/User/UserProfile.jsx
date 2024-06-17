@@ -55,7 +55,7 @@ function UserProfile() {
         const response = await axios.get(`/auth/profile/${id}`);
         console.log(response)
         if (response.status === 200) {
-          const userProfileData = response.data;
+          const userProfileData = response.data.user;
           setUserProfile(userProfileData);
           setIsLoading(false);
           setIsError(false);
@@ -88,7 +88,7 @@ function UserProfile() {
 
             <div className="flex-column d-flex justify-content-start">
               <h3 className="card-title ">
-                Welcome, {userProfile.firstName}!
+                Welcome, {userProfile.name}!
               </h3>
               <p className="card-text">Email: {userProfile.email}</p>
               <p className="card-text">You are: {userProfile.type}</p>

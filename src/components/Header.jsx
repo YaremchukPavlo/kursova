@@ -17,8 +17,13 @@ function Header() {
   return (
     <header className="header">
       <div className="d-flex justify-content-between align-items-center">
-        <p className="m-0">Military Car Helper</p>
+      <a className="m-0" href="/" style={{color: "white", textDecoration: "none"}} >Military Car Helper</a>
         <div className="header-buttons align-items-center">
+        <button className="col-8 align-items-center">
+              <Link to="/news" className="link1">
+                News
+              </Link>
+            </button>
           {userType === "volunteer" && (
             <button className="col-8 align-items-center">
               <Link to="/add-car" className="link1">

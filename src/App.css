@@ -25,6 +25,7 @@ html {
   .header-buttons {
     display: flex;
     justify-content: flex-start;
+    margin-right: 140px;
   }
   
   .header-buttons button {

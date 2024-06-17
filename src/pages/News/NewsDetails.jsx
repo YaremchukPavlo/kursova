@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
-import HeaderLite from "../../components/header_lite";
+import Header from "../../components/Header";
 import "./NewsDetail.css";
 import img1 from "./NewsImages/1.jpg";
 import img11 from "./NewsImages/11.jpg";
@@ -57,7 +57,7 @@ function NewsDetail() {
 
   return (
     <div className="first">
-      <HeaderLite />
+      <Header />
       <div className="news-detail-container form_container p-5 rounded">
         <form className="f">
           <div className="d-flex justify-content-between m-2">

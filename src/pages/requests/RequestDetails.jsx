@@ -42,35 +42,15 @@ function RequestDetails() {
     fetchData();
   }, [id]);
 
-  const handleAccept = () => {
-    fetch(`/requests/accept-req/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setRequest((prevRequest) => ({ ...prevRequest, status: "Accepted" }));
+  const handleToggle = () => {
+    axios.post(`/help/toggle/${id}`, {})
+      .then((response) => {
+        if (response.status === 200) {
+          setRequest((prevRequest) => ({ ...prevRequest, status: response.data.help.status }));
+        }
       })
       .catch((error) => {
         console.error("Error accepting request:", error);
-      });
-  };
-
-  const handleDecline = () => {
-    fetch(`/requests/decline-req/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setRequest((prevRequest) => ({ ...prevRequest, status: "Declined" }));
-      })
-      .catch((error) => {
-        console.error("Error declining request:", error);
       });
   };
 
@@ -112,7 +92,7 @@ function RequestDetails() {
                 className="col-8 btn btn-primary m-1"
                 type="button"
                 style={{ backgroundColor: "rgb(103, 86, 70)" }}
-                onClick={handleAccept}
+                onClick={handleToggle}
               >
                 Accept
               </button>
@@ -120,7 +100,7 @@ function RequestDetails() {
                 className="col-8 btn btn-primary m-1"
                 type="button"
                 style={{ backgroundColor: "rgb(103, 86, 70)" }}
-                onClick={handleDecline}
+                onClick={handleToggle}
               >
                 Decline
               </button>
