@@ -10,6 +10,7 @@ import iimg1 from "../../components/img1.jpg";
 import iimg2 from "../../components/img2.jpg";
 import iimg3 from "../../components/img3.jpg";
 import backgroundImage from "./back.jpeg";
+import Footer from "../../components/Footer"
 
 function HPvolunteer() {
   const userType = localStorage.getItem("userType");
@@ -31,6 +32,7 @@ function HPvolunteer() {
           <Requests />
           </div>
         </div>
+        <Footer/>
       </div>
       </div>
   );

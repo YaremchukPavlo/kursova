@@ -9,6 +9,7 @@ import iimg1 from "./image1.jpg";
 import iimg2 from "./image2.jpg";
 import iimg3 from "./image2.jpg";
 import backgroundImage from "./back.jpeg";
+import Footer from "../../components/Footer"
 
 function HPZSU() {
   const userType = localStorage.getItem("userType");
@@ -37,6 +38,7 @@ function HPZSU() {
           </div>
           </div>
         </div>
+        <Footer/>
       </div>
   );
 }

@@ -5,7 +5,7 @@ import defaultUserPhoto from "./user.jpg";
 import "../cars/CarDet.css";
 import Header from "../../components/Header";
 import backgroundImage from "../HomePages/back.jpeg";
-
+import Footer from "../../components/Footer";
 
 function UserProfile() {
   const [userProfile, setUserProfile] = useState(null);
@@ -149,6 +149,7 @@ function UserProfile() {
           )}
         </form>
       </div>
+      <Footer/>
     </div>
   );
 }

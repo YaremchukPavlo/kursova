@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-
 function Requests() {
   const [data, setData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,18 +16,23 @@ function Requests() {
           throw new Error('Response data is empty');
         }
         setData(res.data.help_request); // Оновлюємо стан з отриманими даними
+        setFilteredData(res.data.help_request); // Оновлюємо стан відфільтрованих даних
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
+  useEffect(() => {
+    handleFilterSubmit(); // Оновлення відфільтрованих даних при зміні data або filterStatus
+  }, [data, filterStatus]);
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data
-    ? data.slice(indexOfFirstItem, indexOfLastItem)
+  const currentItems = filteredData
+    ? filteredData.slice(indexOfFirstItem, indexOfLastItem)
     : [];
 
-  const pageNumbers = data
-    ? Array(Math.ceil(data.length / itemsPerPage))
+  const pageNumbers = filteredData
+    ? Array(Math.ceil(filteredData.length / itemsPerPage))
       .fill()
       .map((_, i) => i + 1)
     : [];
@@ -43,9 +47,9 @@ function Requests() {
 
   const handleFilterSubmit = () => {
     if (filterStatus === "") {
-      setFilteredData(currentItems);
+      setFilteredData(data);
     } else {
-      setFilteredData(currentItems.filter((item) => item.status === filterStatus));
+      setFilteredData(data.filter((item) => item.status === filterStatus));
     }
   };
 
@@ -53,7 +57,7 @@ function Requests() {
     <div className="requests">
       <h2 className="text-start">Requests</h2>
 
-          <label>Filter by status:</label>
+      <label>Filter by status:</label>
       <div className="row filter-input mb-3">
         <div className="col-9">
           <select value={filterStatus} onChange={handleFilterChange} className="form-control">
@@ -64,16 +68,15 @@ function Requests() {
           </select>
         </div>
         <div className="col-3">
-
-        <button onClick={handleFilterSubmit} className="btn btn-primary col-12">
-          Filter
-        </button>
+          <button onClick={handleFilterSubmit} className="btn btn-primary col-12">
+            Filter
+          </button>
         </div>
       </div>
 
-      {data ? (
+      {filteredData ? (
         <div className="rer">
-          {filteredData.map((request, index) => (
+          {currentItems.map((request, index) => (
             <div
               key={index}
               className="car-offer-item col-11 card card-body m-3 d-flex flex-row"

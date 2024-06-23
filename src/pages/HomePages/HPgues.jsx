@@ -6,6 +6,7 @@ import img1 from "../News/NewsImages/1.jpg";
 import img2 from "../News/NewsImages/2.jpg";
 import img3 from "../News/NewsImages/3.png";
 import "../News/NewsDetail.css";
+import Footer from "../../components/Footer"
 function HPgues() {
   const news = [
     {
@@ -63,6 +64,7 @@ function HPgues() {
           ))}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
