@@ -205,7 +205,7 @@ function CarOffers() {
               <div className="col-3 d-flex justify-content-center" style={{ width: "100%" }}>
                 {car.image && (
                   <img
-                    src={staticImage}
+                    src={`http://192.168.0.103:8040/uploads/cars/${car.image}`}
                     alt={car.mark}
                     style={{ maxWidth: "150px" }}
                     className="img-fluid"
