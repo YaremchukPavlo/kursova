@@ -25,11 +25,11 @@
   }
    */
 
-   .image-css {
-   width: 100px;
-   height: 100px;
+   .news-card {
+    min-height: 350px;
+    max-height: 350px;
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
   }
   
   .news-card .card-body {
